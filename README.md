@@ -14,5 +14,5 @@ env LDFLAGS="-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib" pip 
 ### 2. Run
 1. local
 ```bash
-python manage.py runserver --settings=cyberconf.settings.development
+python manage.py runserver
 ```
