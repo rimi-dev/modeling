@@ -81,8 +81,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'modeling',
         'USER': 'rimi',
-        'PASSWORD': '1234',
-        'HOST': 'db',
+        'PASSWORD': 'pa55word!!',
+        'HOST': 'modeling.cp7vlsvdnw9c.us-east-2.rds-preview.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -125,3 +125,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 20
+}
