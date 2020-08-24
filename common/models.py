@@ -18,7 +18,7 @@ class Company(models.Model):
     registration_number = models.CharField(unique=True, max_length=10) # 사업자번호
     registration_date = models.DateField()                  # 사업자등록일자
     workers_count = models.IntegerField()                   # 직원수
-    cars_count = models.ManyToManyField(Car, through='CompanyCarCount') # 차량수
+    cars_count = models.ManyToManyField(Car, through='CompanyCarCount', blank=True) # 차량수
     is_matching = models.BooleanField(default=False)        # 매칭가능여부
 
 
@@ -64,9 +64,9 @@ class MoveFeedback(models.Model):
 class RequestHouseMove(models.Model):
     customer = models.ForeignKey(Customer, models.CASCADE)  # 고객정보 FK
     starting_address = models.CharField(max_length=50)      # 출발지 주소정보
-    starting_floors = models.IntegerField()                 # 출발지 층수
+    starting_floors = models.CharField(max_length=8)        # 출발지 층수
     destination_address = models.CharField(max_length=50)   # 도착지 주소정보
-    destination_floors = models.IntegerField()              # 도착지 층수
+    destination_floors = models.CharField(max_length=8)     # 도착지 층수
     move_date = models.DateField()                          # 이사일자
     is_storage = models.BooleanField(default=False)         # 보관이사 여부
     feedback = models.OneToOneField(MoveFeedback, on_delete=models.CASCADE, null=True)  # 피드백

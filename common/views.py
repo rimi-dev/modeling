@@ -24,8 +24,8 @@ class CompanyListAPIView(APIView):
             address_regex=Cast(
                 Func(
                     F('address'),
-                    Value(r'^([가-힣]{2,}) ([가-힣]{3,}) ([가-힣]{2,}동|읍|면) (.*)'),
-                    Value(r'\1 \2 \3'),
+                    Value(r'(.*[가-힣]{1,}[동|읍|리]) (.*)'),
+                    Value(r'\1'),
                     Value('g'),
                     function='regexp_replace'),
                 CharField()
@@ -74,8 +74,8 @@ class RequestHouseMoveListAPIView(APIView):
             start_address_regex=Cast(
                 Func(
                     F('starting_address'),
-                    Value(r'^([가-힣]{2,}) ([가-힣]{3,}) ([가-힣]{2,}동|읍|면) (.*)'),
-                    Value(r'\1 \2 \3'),
+                    Value(r'(.*[가-힣]{1,}[동|읍|리]) (.*)'),
+                    Value(r'\1'),
                     Value('g'),
                     function='regexp_replace'),
                 CharField()
@@ -83,8 +83,8 @@ class RequestHouseMoveListAPIView(APIView):
             end_address_regex=Cast(
                 Func(
                     F('destination_address'),
-                    Value(r'^([가-힣]{2,}) ([가-힣]{3,}) ([가-힣]{2,}동|읍|면) (.*)'),
-                    Value(r'\1 \2 \3'),
+                    Value(r'(.*[가-힣]{1,}[동|읍|리]) (.*)'),
+                    Value(r'\1'),
                     Value('g'),
                     function='regexp_replace'),
                 CharField()
