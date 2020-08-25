@@ -57,7 +57,7 @@ class MoveFeedback(models.Model):
     contract_price = models.IntegerField()                  # 계약가격
     move_date = models.DateField()                          # 이사일
     created_date = models.DateField(auto_now_add=True)      # 피드백 작성일
-    content = models.CharField(max_length=300)              # 피드백 내용
+    content = models.CharField(max_length=1000)              # 피드백 내용
 
 
 # 가정이사 신청정보
