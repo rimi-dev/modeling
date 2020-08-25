@@ -76,12 +76,12 @@ WSGI_APPLICATION = 'modeling.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'modeling',
+        'NAME': 'postgres',
         'USER': 'rimi',
-        # 'PASSWORD': '1234',
-        # 'HOST': 'db',
-        'PASSWORD': 'pa55word!!',
-        'HOST': 'modeling.cp7vlsvdnw9c.us-east-2.rds-preview.amazonaws.com',
+        'PASSWORD': '1234',
+        'HOST': 'db',
+        # 'PASSWORD': 'pa55word!!',
+        # 'HOST': 'modeling.cp7vlsvdnw9c.us-east-2.rds-preview.amazonaws.com',
         'PORT': '5432',
     }
 }
