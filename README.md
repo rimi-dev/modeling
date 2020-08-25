@@ -10,12 +10,12 @@ Install requirements
 ```shell script
 pip install -r requirements.txt
 ```
-### Install issue
-psycopg2 install issue in macOS.
-```shell script
-env LDFLAGS="-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib" pip install psycopg2
-```
-1. 출처: [Link](https://stackoverflow.com/a/39244687)
+>###Install issue
+>psycopg2 install issue in macOS.
+>```shell script
+>env LDFLAGS="-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib" pip install psycopg2
+>```
+>출처: [Link](https://stackoverflow.com/a/39244687)
 ## 2. Getting Started
 ### Run
 ```shell script
