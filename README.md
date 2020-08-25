@@ -1,6 +1,9 @@
 # assignment
+>modeling Task
 ## 0. Prerequisites
-Python 3.8, Django 3.1
+Python 3.8, Django 3.1, docker-compose 
+
+docker push in [here repository packages](https://github.com/rimi-dev/modeling/packages)
 ## 1. Installation Process
 Use the package manager [pip](https://pypi.org/project/pip/) to install foobar.
 ```bash
@@ -11,7 +14,7 @@ psycopg2 install issue in macOS.
 ```bash
 env LDFLAGS="-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib" pip install psycopg2
 ```
-1. 영문 [Link](https://stackoverflow.com/a/39244687)
+1. 출처: [Link](https://stackoverflow.com/a/39244687)
 ## 2. Getting Started
 ### Run
 ```bash
