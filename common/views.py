@@ -17,7 +17,7 @@ class CompanyAPIView(APIView):
             tel_regex=Cast(
                 Func(
                     F('tel'),
-                    Value(r'(02|\d{2,3})(\d{4})(\d{1})(\d{2})(\d{1}$)'),
+                    Value(r'(02|\d{2,3})?(\d{3,})(\d{1})(\d{2})(\d{1}$)'),
                     Value(r'\1-\2-\3**\5'),
                     Value('g'),
                     function='regexp_replace'),
@@ -54,7 +54,7 @@ class CustomerAPIView(APIView):
             tel_regex=Cast(
                 Func(
                     F('tel'),
-                    Value(r'(02|\d{2,3})(\d{4})(\d{1})(\d{2})(\d{1}$)'),
+                    Value(r'(02|\d{2,3})(\d{3,})(\d{1})(\d{2})(\d{1}$)'),
                     Value(r'\1-\2-\3**\5'),
                     Value('g'),
                     function='regexp_replace'),
@@ -81,7 +81,7 @@ class RequestHouseMoveAPIView(APIView):
             tel_regex=Cast(
                 Func(
                     F('customer__tel'),
-                    Value(r'(02|\d{2,3})(\d{4})(\d{1})(\d{2})(\d{1}$)'),
+                    Value(r'(02|\d{2,3})(\d{3,})(\d{1})(\d{2})(\d{1}$)'),
                     Value(r'\1-\2-\3**\5'),
                     Value('g'),
                     function='regexp_replace'),
