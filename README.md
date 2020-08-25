@@ -23,9 +23,9 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
-### Test
+### Run TDD
 ```shell script
-pytest
+py.test
 ```
 ### Resource Information
 - 이사업체 정보
@@ -37,3 +37,8 @@ pytest
 - 차량 정보 
     - EndPoint(Create, Read) : /car/
     - EndPoint(Update, Delete) : /car/<:pk>
+
+### API Document
+This Django Project's all API Information
+
+[API Document](https://web.postman.co/collections/10715220-64b21381-6b7c-4cdb-8d0a-ae076c9eb90c?version=latest&workspace=c42daf6d-5c3c-4ba2-865f-8b1c8007a65f)
