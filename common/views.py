@@ -1,17 +1,12 @@
 from django.db.models import Func, F, Value, CharField
 from django.db.models.functions import Cast
-from django.shortcuts import render
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
-from common.models import (Company, Customer, RequestHouseMove, Car)
-from common.serializers import (CompanySerializer, CarSerializer)
-
-
-class CarViewSet(ModelViewSet):
-    queryset = Car.objects.all()
-    serializer_class = CarSerializer
+from common.models import (Company, Customer, RequestHouseMove, Car, CompanyCarCount, MoveFeedback)
+from common.serializers import (CompanySerializer, CarSerializer, CompanyCarCountSerializer, CustomerSerializer,
+                                MoveFeedbackSerializer, RequestHouseMoveSerializer)
 
 
 class CompanyListAPIView(APIView):
@@ -106,3 +101,33 @@ class RequestHouseMoveListAPIView(APIView):
         response['result'] = queryset
         print(response)
         return Response(response, status=status.HTTP_200_OK)
+
+
+class CarViewSet(ModelViewSet):
+    queryset = Car.objects.all()
+    serializer_class = CarSerializer
+
+
+class CompanyViewSet(ModelViewSet):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+
+
+class CompanyCarCountViewSet(ModelViewSet):
+    queryset = CompanyCarCount.objects.all()
+    serializer_class = CompanyCarCountSerializer
+
+
+class CustomerViewSet(ModelViewSet):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
+
+
+class MoveFeedbackViewSet(ModelViewSet):
+    queryset = MoveFeedback.objects.all()
+    serializer_class = MoveFeedbackSerializer
+
+
+class RequestHouseMoveViewSet(ModelViewSet):
+    queryset = RequestHouseMove.objects.all()
+    serializer_class = RequestHouseMoveSerializer
