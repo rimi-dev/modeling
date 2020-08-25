@@ -1,20 +1,16 @@
 from django.urls import include, path
 from rest_framework import routers
-from common.views import (CompanyListAPIView, CustomerListAPIView, RequestHouseMoveListAPIView, CarViewSet,
-                          CompanyViewSet, CompanyCarCountViewSet, CustomerViewSet, MoveFeedbackViewSet,
-                          RequestHouseMoveViewSet,)
+from common.views import (CompanyAPIView, CustomerAPIView, RequestHouseMoveAPIView, CarViewSet,
+                          CompanyCarCountViewSet, MoveFeedbackViewSet, )
 
 router = routers.DefaultRouter()
-router.register(r'set/car', CarViewSet)
-router.register(r'set/company', CompanyViewSet)
-router.register(r'set/compnay_car_count', CompanyCarCountViewSet)
-router.register(r'set/customer', CustomerViewSet)
-router.register(r'set/feedback', MoveFeedbackViewSet)
-router.register(r'set/request', RequestHouseMoveViewSet)
+router.register(r'car', CarViewSet)
+router.register(r'car_count', CompanyCarCountViewSet)
+router.register(r'feedback', MoveFeedbackViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('company/', CompanyListAPIView.as_view()),
-    path('customer/', CustomerListAPIView.as_view()),
-    path('request/house/', RequestHouseMoveListAPIView.as_view()),
+    path('company/', CompanyAPIView.as_view()),
+    path('customer/', CustomerAPIView.as_view()),
+    path('request/house/', RequestHouseMoveAPIView.as_view()),
 ]

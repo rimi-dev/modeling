@@ -1,15 +1,17 @@
 from django.db.models import Func, F, Value, CharField
 from django.db.models.functions import Cast
+from django.http import Http404
 from rest_framework import status
+from rest_framework.generics import RetrieveUpdateDestroyAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from common.models import (Company, Customer, RequestHouseMove, Car, CompanyCarCount, MoveFeedback)
-from common.serializers import (CompanySerializer, CarSerializer, CompanyCarCountSerializer, CustomerSerializer,
-                                MoveFeedbackSerializer, RequestHouseMoveSerializer)
+from common.serializers import (CarSerializer, CompanySerializer, CompanyCarCountSerializer, CustomerSerializer,
+                                RequestHouseMoveSerializer, MoveFeedbackSerializer)
 
 
-class CompanyListAPIView(APIView):
+class CompanyAPIView(APIView):
     def get(self, request):
         queryset = Company.objects.annotate(
             tel_regex=Cast(
@@ -38,8 +40,15 @@ class CompanyListAPIView(APIView):
         )
         return Response(queryset, status=status.HTTP_200_OK)
 
+    def post(self, request):
+        serializer = CompanySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
-class CustomerListAPIView(APIView):
+
+class CustomerAPIView(APIView):
     def get(self, request):
         queryset = Customer.objects.annotate(
             tel_regex=Cast(
@@ -57,8 +66,15 @@ class CustomerListAPIView(APIView):
         )
         return Response(queryset, status=status.HTTP_200_OK)
 
+    def post(self, request):
+        serializer = CustomerSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
-class RequestHouseMoveListAPIView(APIView):
+
+class RequestHouseMoveAPIView(APIView):
     def get(self, request):
         response = {}
         queryset = RequestHouseMove.objects.annotate(
@@ -102,15 +118,17 @@ class RequestHouseMoveListAPIView(APIView):
         print(response)
         return Response(response, status=status.HTTP_200_OK)
 
+    def post(self, request):
+        serializer = RequestHouseMoveSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+
 
 class CarViewSet(ModelViewSet):
     queryset = Car.objects.all()
     serializer_class = CarSerializer
-
-
-class CompanyViewSet(ModelViewSet):
-    queryset = Company.objects.all()
-    serializer_class = CompanySerializer
 
 
 class CompanyCarCountViewSet(ModelViewSet):
@@ -118,16 +136,6 @@ class CompanyCarCountViewSet(ModelViewSet):
     serializer_class = CompanyCarCountSerializer
 
 
-class CustomerViewSet(ModelViewSet):
-    queryset = Customer.objects.all()
-    serializer_class = CustomerSerializer
-
-
 class MoveFeedbackViewSet(ModelViewSet):
     queryset = MoveFeedback.objects.all()
     serializer_class = MoveFeedbackSerializer
-
-
-class RequestHouseMoveViewSet(ModelViewSet):
-    queryset = RequestHouseMove.objects.all()
-    serializer_class = RequestHouseMoveSerializer

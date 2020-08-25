@@ -11,21 +11,21 @@ class Car(models.Model):
 
 # 이사업체 정보
 class Company(models.Model):
-    name = models.CharField(max_length=50)                  # 업체명
-    owner_name = models.CharField(max_length=20)            # 대표이사 이름
-    tel = models.CharField(max_length=11)                   # 연락처
-    address = models.CharField(max_length=50)                            # 주소
+    name = models.CharField(max_length=50)                           # 업체명
+    owner_name = models.CharField(max_length=20)                     # 대표이사 이름
+    tel = models.CharField(max_length=11)                            # 연락처
+    address = models.CharField(max_length=50)                        # 주소
     registration_number = models.CharField(unique=True, max_length=10) # 사업자번호
-    registration_date = models.DateField()                  # 사업자등록일자
-    workers_count = models.IntegerField()                   # 직원수
+    registration_date = models.DateField()                           # 사업자등록일자
+    workers_count = models.IntegerField()                            # 직원수
     cars_count = models.ManyToManyField(Car, through='CompanyCarCount', blank=True) # 차량수
-    is_matching = models.BooleanField(default=False)        # 매칭가능여부
+    is_matching = models.BooleanField(default=False)                 # 매칭가능여부
 
 
 # 업체당 차량별 댓수 정보
 class CompanyCarCount(models.Model):
-    car = models.ForeignKey(Car, on_delete=models.CASCADE)  # 차 FK
-    count = models.IntegerField()                           # 차 댓수
+    car = models.ForeignKey(Car, on_delete=models.CASCADE)          # 차 FK
+    count = models.IntegerField(default=0)                          # 차 댓수
     company = models.ForeignKey(Company, on_delete=models.CASCADE)  # 이사업체 정보 FK
 
 
