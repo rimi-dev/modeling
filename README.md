@@ -28,15 +28,18 @@ python manage.py runserver
 py.test
 ```
 ### Resource Information
-- 이사업체 정보
+- 이사업체 정보/추가
     - EndPoint : /company/
-- 고객 정보
+- 고객 정보/추가
     - EndPoint : /customer/
-- 가정이사 신청접수 정보
+- 가정이사 신청접수 정보/추가
     - EndPoint : /request/house/
-- 차량 정보 
-    - EndPoint(Create, Read) : /car/
-    - EndPoint(Update, Delete) : /car/<:pk>
+- 차량 정보/추가
+    - EndPoint : /car/
+- 업체당 차량 소유 댓수 정보/추가
+    - EndPoint : /car_count/
+- 피드백 정보/추가
+    - EndPoint : /feedback/
 
 ## 3. API Document
 This Django Project's all API Information
