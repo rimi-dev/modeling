@@ -61,3 +61,6 @@ class FeedbackModelTestCase(TestCase):
                                 Elit at imperdiet dui accumsan sit. Ornare arcu dui vivamus arcu felis. 
                                 Egestas integer eget aliquet nibh praesent. In hac habitasse platea dictumst quisque 
                                 sagittis purus. Pulvinar elementum integer enim neque volutpat ac.''')
+
+        feedback.save()
+        self.assertNotEqual(self.count, MoveFeedback.objects.count())

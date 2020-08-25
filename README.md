@@ -26,6 +26,6 @@ python manage.py runserver
     - EndPoint : /customer/
 - 가정이사 신청접수 정보
     - EndPoint : /request/house/
-- 차량정보 
+- 차량 정보 
     - EndPoint(Create, Read) : /car/
     - EndPoint(Update, Delete) : /car/<:pk>
