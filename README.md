@@ -10,7 +10,7 @@ Install requirements
 ```shell script
 pip install -r requirements.txt
 ```
->!!! Install issue !!!
+>:bangbang: Install issue
 >
 >psycopg2 install issue in macOS.
 >```shell script
