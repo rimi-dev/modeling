@@ -1,5 +1,5 @@
 from django.test import TestCase
-from common.models import (Car, Company, CompanyCarCount, Customer, RequestHouseMove)
+from common.models import (Car, Company, CompanyCarCount, Customer, RequestHouseMove, MoveFeedback)
 
 
 class CompanyRelationModelTestCase(TestCase):
@@ -44,7 +44,20 @@ class CustomerRelationModelTestCase(TestCase):
 
 class FeedbackModelTestCase(TestCase):
     def setUp(self):
-        pass
+        self.count = MoveFeedback
+        self.company = Company(name='(주)마켓디자이너스', owner_name='김현영', tel='025180060', address='서울 강남구 역삼동 736-17',
+                               registration_number='1234567890', registration_date='2020-01-01', workers_count=100,
+                               is_matching=True)
+        self.company.save()
 
     def test_model_can_create_a_feedback(self):
-        pass
+        feedback = MoveFeedback(company=self.company, is_agree_public=True, professional_level=3, price_level=5,
+                                kindness_level=2, is_revisit=True, contract_price=3000000, move_date='2020-01-03',
+                                content='''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                                tempor incididunt ut labore et dolore magna aliqua. Nisl tincidunt eget nullam non.
+                                Quis hendrerit dolor magna eget est lorem ipsum dolor sit. Volutpat odio facilisis 
+                                mauris sit amet massa. Commodo odio aenean sed adipiscing diam donec adipiscing 
+                                tristique. Mi eget mauris pharetra et. Non tellus orci ac auctor augue. 
+                                Elit at imperdiet dui accumsan sit. Ornare arcu dui vivamus arcu felis. 
+                                Egestas integer eget aliquet nibh praesent. In hac habitasse platea dictumst quisque 
+                                sagittis purus. Pulvinar elementum integer enim neque volutpat ac.''')

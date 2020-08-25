@@ -5,8 +5,13 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
-from common.models import (Company, Customer, RequestHouseMove)
-from common.serializers import (CompanySerializer)
+from common.models import (Company, Customer, RequestHouseMove, Car)
+from common.serializers import (CompanySerializer, CarSerializer)
+
+
+class CarViewSet(ModelViewSet):
+    queryset = Car.objects.all()
+    serializer_class = CarSerializer
 
 
 class CompanyListAPIView(APIView):
@@ -24,7 +29,7 @@ class CompanyListAPIView(APIView):
             address_regex=Cast(
                 Func(
                     F('address'),
-                    Value(r'(.*[가-힣]{1,}[동|읍|리]) (.*)'),
+                    Value(r'(.*[시|군|구] [가-힣]{1,}[동|읍|리]) .*'),
                     Value(r'\1'),
                     Value('g'),
                     function='regexp_replace'),
@@ -74,7 +79,7 @@ class RequestHouseMoveListAPIView(APIView):
             start_address_regex=Cast(
                 Func(
                     F('starting_address'),
-                    Value(r'(.*[가-힣]{1,}[동|읍|리]) (.*)'),
+                    Value(r'(.*[시|군|구] [가-힣]{1,}[동|읍|리]) .*'),
                     Value(r'\1'),
                     Value('g'),
                     function='regexp_replace'),
@@ -83,7 +88,7 @@ class RequestHouseMoveListAPIView(APIView):
             end_address_regex=Cast(
                 Func(
                     F('destination_address'),
-                    Value(r'(.*[가-힣]{1,}[동|읍|리]) (.*)'),
+                    Value(r'(.*[시|군|구] [가-힣]{1,}[동|읍|리]) .*'),
                     Value(r'\1'),
                     Value('g'),
                     function='regexp_replace'),

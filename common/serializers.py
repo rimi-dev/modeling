@@ -9,7 +9,6 @@ class CarSerializer(serializers.ModelSerializer):
 
 
 class CompanySerializer(serializers.ModelSerializer):
-    tel_regex = serializers.CharField()
     class Meta:
         model = Company
         fields = '__all__'
