@@ -1,4 +1,4 @@
-# assignment
+# Django Modeling
 modeling Task
 version 1.0
 ## 0. Prerequisites
