@@ -5,23 +5,32 @@ from common.models import (Car, Company, CompanyCarCount, Customer, RequestHouse
 class CompanyRelationModelTestCase(TestCase):
     def setUp(self):
         self.car = Car(weight='1톤')
+        self.car.save()
         self.old_count = Company.objects.count()
         self.company = Company(name='(주)마켓디자이너스', owner_name='김현영', tel='025180060', address='서울 강남구 역삼동 736-17',
                                registration_number='1234567890', registration_date='2020-01-01', workers_count=100,
                                is_matching=True)
+        self.company.save()
+        self.one_car_count = CompanyCarCount(car=self.car, count=20, company=self.company)
 
     def test_model_can_create_a_company(self):
-        self.company.save()
-        self.car.save()
-        one_car_count = CompanyCarCount(car=self.car, count=20, company=self.company)
-        one_car_count.save()
+        self.one_car_count.save()
         self.company.cars_count.add(self.car)
         self.company.save()
         new_count = Company.objects.count()
         self.assertNotEqual(self.old_count, new_count)
 
     def test_model_can_update_a_company(self):
-        pass
+        old_car_count = CompanyCarCount.objects.count()
+        self.one_car_count.count = 93
+        self.one_car_count.save()
+        self.company.workers_count = 88
+        self.company.save()
+        new_car_count = CompanyCarCount.objects.count()
+        self.assertEqual(old_car_count, new_car_count)
+        self.assertEqual(self.old_count, Company.objects.count())
+        self.assertTrue(self.company.workers_count == 88)
+        self.assertTrue(self.one_car_count.count == 93)
 
 
 class CustomerRelationModelTestCase(TestCase):
