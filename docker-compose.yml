@@ -10,7 +10,8 @@ services:
 
   web:
     build: .
-    command: python manage.py runserver 0:8000
+    command:
+      - ./start-dev.sh
     ports:
       - "8000:8000"
     volumes:
@@ -19,4 +20,3 @@ services:
       - db
     env_file:
       - ./.env.dev
-    image: docker.pkg.github.com/rimi-dev/modeling/web

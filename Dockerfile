@@ -3,4 +3,5 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /web
 COPY . .
 RUN pip install -r requirements.txt
-RUN python manage.py migrate
+COPY start-dev.sh ./start-dev.sh
+RUN chmod +x ./start-dev.sh

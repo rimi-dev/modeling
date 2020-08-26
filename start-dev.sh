@@ -1,3 +1,3 @@
-python manage.py makemigrations
+#!/bin/bash
 python manage.py migrate
-exec "$@"
+python manage.py runserver 0:8000
