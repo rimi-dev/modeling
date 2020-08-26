@@ -4,7 +4,7 @@ services:
   db:
     image: postgres
     environment:
-      - POSTGRES_USER=rimi
+      - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=1234
       - POSTGRES_INITDB_ARGS=--encoding=UTF-8
 
