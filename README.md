@@ -42,7 +42,7 @@ py.test
 ## 2. API Document
 This Django Project's all API Information
 
-[API Document](https://web.postman.co/collections/10715220-64b21381-6b7c-4cdb-8d0a-ae076c9eb90c?version=latest&workspace=c42daf6d-5c3c-4ba2-865f-8b1c8007a65f)
+[API Document](https://documenter.getpostman.com/view/10715220/TVCZZB54)
 
 ## 3. ERD Diagram
 ![image](https://user-images.githubusercontent.com/45389547/91257781-b6294700-e7a5-11ea-9c17-def3514b0a11.png)
