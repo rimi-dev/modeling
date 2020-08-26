@@ -44,5 +44,8 @@ This Django Project's all API Information
 
 [API Document](https://web.postman.co/collections/10715220-64b21381-6b7c-4cdb-8d0a-ae076c9eb90c?version=latest&workspace=c42daf6d-5c3c-4ba2-865f-8b1c8007a65f)
 
+## 3. ERD Diagram
+<iframe width="560" height="315" src='https://dbdiagram.io/embed/5f45ec977b2e2f40e9dec60f'> </iframe>
+
 ***
 Developer [@Rimi](https://github.com/rimi-dev)
