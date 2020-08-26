@@ -19,7 +19,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'dtn96mf%5x_x1&2_u1dvuo#7h5zz4w!(!jfqh48t-l=ttz%_90'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -70,9 +70,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'modeling.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+# docker db
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -83,6 +81,18 @@ DATABASES = {
         'PORT': os.environ.get('DATABASE_PORT'),
     }
 }
+
+# RDS
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'modeling',
+#         'USER': 'rimi',
+#         'PASSWORD': 'pa55word!!',
+#         'HOST': 'modeling.cp7vlsvdnw9c.us-east-2.rds-preview.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
