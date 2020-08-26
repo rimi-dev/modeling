@@ -5,29 +5,23 @@ version 1.0
 Python 3.8, Django 3.1, docker-compose 
 
 docker push in [here repository packages](https://github.com/rimi-dev/modeling/packages)
-## 1. Installation Process
-Install requirements
-```shell script
-pip install -r requirements.txt
-```
->:bangbang: Install issue
->
->psycopg2 install issue in macOS.
->```shell script
->env LDFLAGS="-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib" pip install psycopg2
->```
->출처: [Link](https://stackoverflow.com/a/39244687)
-## 2. Getting Started
+## 1. Getting Started
+- Git clone this project
 ### Run with docker-compose
+installed docker
 ```shell script
 docker-compose up
 ```
 ### Run
+Change DATABASES(rds remark) in settings
 ```shell script
+pip install -r requirements.txt
+python manage.py migrate
 python manage.py runserver
 ```
 
 ### Run TDD
+Change DATABASES(rds remark) in settings
 ```shell script
 py.test
 ```
@@ -45,7 +39,7 @@ py.test
 - 피드백 정보/추가
     - EndPoint : /feedback/
 
-## 3. API Document
+## 2. API Document
 This Django Project's all API Information
 
 [API Document](https://web.postman.co/collections/10715220-64b21381-6b7c-4cdb-8d0a-ae076c9eb90c?version=latest&workspace=c42daf6d-5c3c-4ba2-865f-8b1c8007a65f)
