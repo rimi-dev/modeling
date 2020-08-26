@@ -18,6 +18,10 @@ pip install -r requirements.txt
 >```
 >출처: [Link](https://stackoverflow.com/a/39244687)
 ## 2. Getting Started
+### Run with docker-compose
+```shell script
+docker-compose up
+```
 ### Run
 ```shell script
 python manage.py runserver
